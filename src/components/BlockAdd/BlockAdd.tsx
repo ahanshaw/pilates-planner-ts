@@ -53,9 +53,9 @@ const BlockAdd = () => {
     type FormValues = {
         title: string;
         type: string,
-        focus: string[],
-        level: '',
-        equipment: '',
+        focus: string,
+        level: string,
+        equipment: string,
         props: string[],
         start: string,
         instructions: { step: string }[];

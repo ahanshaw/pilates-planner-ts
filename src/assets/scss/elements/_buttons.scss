@@ -3,13 +3,16 @@ button {
 }
 
 %btn {
+    display: inline-block;
     width: auto;
     height: 2rem;
     font-size: .9rem;
     font-weight: bold;
     line-height: 2rem;
     text-transform: uppercase;
+    text-decoration: none;
     padding: 0 1.5rem;
+    appearance: none;
     transition: color .3s ease, background-color 0.3s ease;
 }
 

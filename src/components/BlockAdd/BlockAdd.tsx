@@ -128,7 +128,7 @@ const BlockAdd = () => {
         <div className="container stack-xl">
             <h1>Add a Block</h1>
             <form onSubmit={onSubmit} className="stack-xl">
-            <fieldset className="stack-sm">
+                <fieldset className="stack-sm">
                     <label className="bold" htmlFor="title">Block title:</label>
                     <input type="text" id="title" {...register("title", { required: true })} />
                     {errors?.title && <p>{errors.title.message}</p>}

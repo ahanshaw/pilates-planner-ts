@@ -26,8 +26,8 @@ export default function UserPasswordReset() {
     }
 
 	return (
-		<div className="container stack-xl">
-			<form onSubmit={(e) => sendPasswordResetEmail(e, email)}>
+		<div className="container">
+			<form className="stack" onSubmit={(e) => sendPasswordResetEmail(e, email)}>
 				<label htmlFor="email">Email Address</label>
 				<input
 					type="email"
@@ -36,7 +36,7 @@ export default function UserPasswordReset() {
 					onChange={(e) => setEmail(e.target.value)}
 					placeholder="E-mail Address"
 				/>
-				<button>Reset Password</button>
+				<button className="btn-primary">Reset Password</button>
 			</form>
 		</div>
 	);

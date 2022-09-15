@@ -14,10 +14,10 @@ import "./assets/scss/main.scss";
 
 function App() {
   return (
-    <div className="wrapper stack-xl">
+    <div className="wrapper">
       <div>
         <Header />
-        <div className="main">
+        <div className="main stack-xl">
           <Router>
             <Switch>
               <Route path="/account/login">
@@ -32,14 +32,14 @@ function App() {
               <Route path="/account/dashboard">
                 <UserDashboard />
               </Route>
-              <Route path="/add">
+              <Route path="/block/add">
                 <BlockAdd />
               </Route>
-              <Route path="/list">
+              <Route path="/block/list">
                 <BlockList />
               </Route>
               <Route>
-                <BlockList />
+                <UserDashboard />
               </Route>
             </Switch>
           </Router>

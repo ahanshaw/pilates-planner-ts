@@ -13,6 +13,11 @@
     margin-inline: auto;
 }
 
+.flex {
+    display: flex;
+    gap: $gap;
+}
+
 .flex-between {
     display: flex;
     justify-content: space-between;
@@ -22,6 +27,11 @@
 .align-bottom {
     display: flex;
     align-items: flex-end;
+}
+
+.align-middle {
+    display: flex;
+    align-items: center;
 }
 
 .stack > * + * {

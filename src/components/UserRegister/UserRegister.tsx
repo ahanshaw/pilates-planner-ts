@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { database } from '../../services/firebase';
 import { auth, logout } from '../../services/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -30,7 +30,6 @@ export default function UserRegister() {
 				setUserExists(true);
 			}
 			if (err.code === 'auth/invalid-email') {
-				;
 				setError('Please enter a valid email address.');
 			}
 			if (err.code === 'auth/weak-password') {
@@ -70,68 +69,58 @@ export default function UserRegister() {
 	};
 
 	if (user) {
-		return (
-			<div>
-				<button onClick={logout}>
-					Logout
-				</button>
-			</div>
-		);
+		return <Redirect to='/' />
 	}
 
 	return (
-		<div className="container stack-xl">
+		<div className="container">
 			<h1>Register</h1>
-			<form onSubmit={(e) => createUserWithEmailAndPassword(e, email, password)}>
-				<fieldset>
+			<form className="stack" onSubmit={(e) => createUserWithEmailAndPassword(e, email, password)}>
+				<fieldset className="stack-sm">
 					<label htmlFor="firstName">First Name</label>
 					<input
 						type="text"
 						id="firstName"
-						className="login__textBox"
 						value={firstName}
 						onChange={(e) => setFirstName(e.target.value)}
 						placeholder="First Name"
 						required
 					/>
 				</fieldset>
-				<fieldset>
+				<fieldset className="stack-sm">
 					<label htmlFor="lastName">Last Name</label>
 					<input
 						type="text"
 						id="lastName"
-						className="login__textBox"
 						value={lastName}
 						onChange={(e) => setLastName(e.target.value)}
 						placeholder="Last Name"
 						required
 					/>
 				</fieldset>
-				<fieldset>
+				<fieldset className="stack-sm">
 					<label htmlFor="email">Email Address</label>
 					<input
 						type="email"
 						id="email"
-						className="login__textBox"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 						placeholder="E-mail Address"
 						required
 					/>
 				</fieldset>
-				<fieldset>
+				<fieldset className="stack-sm">
 					<label htmlFor="password">Password <span>(must have at least 6 characters)</span></label>
 					<input
 						type="password"
 						id="password"
-						className="login__textBox"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
 						placeholder="Password"
 						required
 					/>
 				</fieldset>
-				<button className="btn btn--primary">Create Account</button>
+				<button className="btn-primary">Create Account</button>
 				{userExists && !resetSent &&
 					<div>
 						<p>An account with that email address already exists. <Link to={`/account/login`}>Log in</Link> or <button onClick={(e) => sendPasswordResetEmail(e, email)}>reset your password</button>.</p>
@@ -141,7 +130,7 @@ export default function UserRegister() {
 					<p>Password reset sent! Check your email.</p>
 				}
 				{error &&
-					<p className="error">{error}</p>
+					<p className="form-error">{error}</p>
 				}
 			</form>
 		</div>

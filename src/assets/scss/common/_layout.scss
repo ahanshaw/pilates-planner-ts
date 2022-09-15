@@ -1,3 +1,8 @@
+.wrapper {
+    width: calc(100% - #{$gap-xl});
+    margin-inline: auto;
+}
+
 .container {
     width: 100%;
     max-inline-size: 75ch;

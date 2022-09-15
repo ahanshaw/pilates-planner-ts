@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { database } from '../../services/firebase';
 import { useForm, useFieldArray } from 'react-hook-form';
+import { auth } from '../../services/firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 const BlockAdd = () => {
+    const [user] = useAuthState(auth);
     const [loading, setLoading] = useState<boolean>(true);
     const [typesList, setTypesList] = useState<{ item: string }[]>([]);
     const [levelList, setLevelList] = useState<{ item: string }[]>([]);
@@ -99,9 +102,19 @@ const BlockAdd = () => {
         }
     );
 
-     if (loading) {
+	if (!user){
         return (
-            <p>Just a moment while we find some props ...</p>
+            <div className="container stack-xl">
+               <p>You need to be a user, loser.</p>
+            </div>
+        );
+	}
+
+    if (loading) {
+        return (
+            <div className="container stack-xl">
+                <p>Just a moment while we find some props ...</p>
+            </div>
         )
     }
 

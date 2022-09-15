@@ -24,6 +24,7 @@ const BlockList = () => {
             snapshot.forEach(block => {
                 blockArr.push(block.val());
                 setLoading(false);
+
             });
         });
         setBlocks(blockArr);
@@ -55,7 +56,7 @@ const BlockList = () => {
                                 block.props.map((prop, index) => {
                                     return (
                                         <span className="block-props" key={index}>
-                                            {prop.replace(/-/g, ' ').toLowerCase()}
+                                            {capitalizeFirst(prop)}
                                         </span>
                                     )
                                 }) : <span>None</span>

@@ -3,14 +3,28 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: calc(100% - #{$gap-xl});
+    width: calc(100% - #{$gap-xxl});
     margin-inline: auto;
 }
 
-.container {
-    width: 100%;
-    max-inline-size: 75ch;
-    margin-inline: auto;
+.main {
+	flex-basis: 0;
+	flex-grow: 999;
+	min-inline-size: 50%;
+}
+
+.sidebar {
+	flex-basis: 20rem;
+	flex-grow: 1;
+}
+
+.sticky {
+    position: sticky;
+    top: 0;
+    max-height: 100vh;
+    align-self: start;
+    padding-bottom: $gap-xl;
+    overflow: scroll;
 }
 
 .flex {
@@ -21,7 +35,8 @@
 .flex-between {
     display: flex;
     justify-content: space-between;
-    gap: $gap;
+    flex-wrap: wrap;
+    gap: $gap-xxl;
 }
 
 .align-bottom {

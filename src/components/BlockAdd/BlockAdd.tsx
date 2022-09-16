@@ -270,7 +270,7 @@ const BlockAdd = () => {
                     </div>
                 </fieldset>
 
-                <input type="submit" />
+                <input className="btn-primary" type="submit" />
             </form>
         </div>
     )

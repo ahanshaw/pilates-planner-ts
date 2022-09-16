@@ -51,17 +51,15 @@ const BlockList = () => {
         return str.charAt(0).toUpperCase() + str.slice(1).replace(/-/g, ' ');
     }
 
-    function filterPlainArray(array:any, filters:any) {
+    function filterPlainArray(array: any, filters: any) {
         const filterKeys = Object.keys(filters);
-        return array.filter((item: { [x: string]: any; }) => {
-          // validates all filter criteria
-          return filterKeys.every(key => {
-            // ignores an empty filter
-            if (!filters[key].length) return true;
-            return filters[key].find((filter: any) => filter === item[key]);
-          });
+        return array.filter((item: any) => {
+            return filterKeys.every(key => {
+                if (!filters[key].length) return true;
+                return JSON.stringify(filters[key]).includes(JSON.stringify(item[key]));
+            });
         });
-      }
+    }
 
     useEffect(() => {
         const blockFilters = {
@@ -81,8 +79,6 @@ const BlockList = () => {
             <p>Just a moment while we find some props ...</p>
         )
     }
-
-    console.log(filters);
 
     return (
         <div className="flex-between stack-xl">

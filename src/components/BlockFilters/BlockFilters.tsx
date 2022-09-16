@@ -46,7 +46,7 @@ const BlockFilters = (props: any) => {
         props.updateTypesFilters([data.types]);
         props.updateFocusFilters([data.focus]);
         props.updateLevelsFilters([data.levels]);
-        props.updateEquipmentFilters([data.equipment]);
+        props.updateEquipmentFilters([data.levels]);
         props.updatePropsFilters([data.props]);
     });
 

@@ -18,6 +18,15 @@
 	flex-grow: 1;
 }
 
+
+// width 
+
+.max-width {
+    max-width: 65ch;
+}
+
+// flex
+
 .sticky {
     position: sticky;
     top: 0;
@@ -28,15 +37,20 @@
 }
 
 .flex {
-    display: flex;
-    gap: $gap;
+    @extend %flex;
 }
 
 .flex-between {
-    display: flex;
+    @extend %flex;
     justify-content: space-between;
-    flex-wrap: wrap;
-    gap: $gap-xxl;
+}
+
+.flex-fifty-fifty {
+    @extend %flex;
+
+    & > * {
+        flex: 1;
+    }
 }
 
 .align-bottom {
@@ -48,6 +62,9 @@
     display: flex;
     align-items: center;
 }
+
+
+// spacing 
 
 .stack > * + * {
     margin-block-start: $gap;

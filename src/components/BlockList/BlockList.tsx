@@ -56,7 +56,7 @@ const BlockList = () => {
         return array.filter((item: any) => {
             return filterKeys.every(key => {
                 if (!filters[key].length) return true;
-                return JSON.stringify(filters[key]).includes(JSON.stringify(item[key]));
+                return filters[key].find((filter: any) => filter === item[key]);
             });
         });
     }
@@ -82,30 +82,36 @@ const BlockList = () => {
 
     return (
         <div className="flex-between stack-xl">
-            <div className="main">
+            <div className="main stack-xl">
                 <h1>Block List</h1>
                 {filteredBlocks
                     .map((block, index) => {
                         return (
-                            <div className="stack" key={index}>
+                            <div className="stack-sm max-width" key={index}>
                                 <h2>{block.title}</h2>
-                                <p><strong>Type:</strong> {capitalizeFirst(block.type)}</p>
-                                <p><strong>Level:</strong> {capitalizeFirst(block.level)}</p>
-                                <p><strong>Focus:</strong> {capitalizeFirst(block.focus)}</p>
-                                <p><strong>Equipment:</strong> {capitalizeFirst(block.equipment)}</p>
-                                <p><strong>Props:</strong> {block.props?.length > 0 ?
-                                    block.props.map((prop, index) => {
-                                        return (
-                                            <span className="block-props" key={index}>
-                                                {capitalizeFirst(prop)}
-                                            </span>
-                                        )
-                                    }) : <span>None</span>
-                                }
-                                </p>
+                                <div className="flex-fifty-fifty">
+                                    <div>
+                                        <p><strong>Type:</strong> {capitalizeFirst(block.type)}</p>
+                                        <p><strong>Level:</strong> {capitalizeFirst(block.level)}</p>
+                                        <p><strong>Focus:</strong> {capitalizeFirst(block.focus)}</p>
+                                    </div>
+                                    <div>
+                                        <p><strong>Equipment:</strong> {capitalizeFirst(block.equipment)}</p>
+                                        <p><strong>Props:</strong> {block.props?.length > 0 ?
+                                            block.props.map((prop, index) => {
+                                                return (
+                                                    <span className="block-props" key={index}>
+                                                        {capitalizeFirst(prop)}
+                                                    </span>
+                                                )
+                                            }) : <span>None</span>
+                                        }
+                                        </p>
+                                    </div>
+                                </div>
                                 <p><strong>Start position:</strong> {block.start}</p>
                                 <p><strong>Instructions:</strong></p>
-                                <ul className="stack-sm">
+                                <ul>
                                     {block.instructions.map((instruction, index) => {
                                         return (
                                             <li key={index}>
@@ -119,7 +125,7 @@ const BlockList = () => {
                     })
                 }
             </div>
-            <div className="sidebar sticky">
+            <div className="sidebar stack-lg sticky">
                 <BlockFilters updateTypesFilters={setTypesFilters} updateFocusFilters={setFocusFilters} updateLevelsFilters={setLevelsFilters} updateEquipmentFilters={setEquipmentFilters} updatePropsFilters={setPropsFilters} updateFilters={setFilters} />
             </div>
         </div>

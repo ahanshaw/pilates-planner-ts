@@ -33,6 +33,7 @@ export default function UserDashboard() {
 		return (
 			<div className="container stack-xl">
 				<h1>My Dashboard</h1>
+				<p><Link className="link" to={`/block/list`}>View Blocks</Link></p>
 				{admin &&
 					<p><Link className="btn-primary" to={`/block/add`}>Add a Block</Link></p>
 				}

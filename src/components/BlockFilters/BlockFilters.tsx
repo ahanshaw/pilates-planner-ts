@@ -12,14 +12,6 @@ const BlockFilters = (props: any) => {
     const capitalizeFirst = (str: string) => {
         return str.charAt(0).toUpperCase() + str.slice(1).replace(/-/g, ' ');
     }
-
-    type FilterValues = {
-        types: string[],
-        focus: string[],
-        levels: string[],
-        equipment: string[],
-        props: string[];
-    };
     
     useEffect(() => {
         database.ref('types').child('list').on('value', function (snapshot) {
@@ -39,15 +31,26 @@ const BlockFilters = (props: any) => {
         });
     }, []);
 
+    type FilterValues = {
+        type: string[],
+        focus: string[],
+        level: string[],
+        equipment: string[],
+        props: string[];
+    };
+
     const { register, handleSubmit } = useForm<FilterValues>();
 
-    const onSubmit = handleSubmit(data => {
-        props.updateFilters([data]);
-        props.updateTypesFilters([data.types]);
-        props.updateFocusFilters([data.focus]);
-        props.updateLevelsFilters([data.levels]);
-        props.updateEquipmentFilters([data.equipment]);
-        props.updatePropsFilters([data.props]);
+    const onSubmit = handleSubmit((data: any) => {
+        let cleanData: any = {};
+
+        Object.keys(data).forEach((key: any) => {
+            if (data[key].length) {
+                cleanData[key] = data[key];
+            }
+        });
+
+        props.updateFilters(cleanData);
     });
 
     return (
@@ -60,7 +63,7 @@ const BlockFilters = (props: any) => {
                         typesList.map((item, index) => {
                             return (
                                 <div key={index}>
-                                    <input type="checkbox" id={item.item} value={item.item} {...register("types")} name="types" />
+                                    <input type="checkbox" id={item.item} value={item.item} {...register("type")} name="type" />
                                     <label htmlFor={item.item}>{capitalizeFirst(item.item)}</label>
                                 </div>
                             )
@@ -74,7 +77,7 @@ const BlockFilters = (props: any) => {
                         levelList.map((item, index) => {
                             return (
                                 <div key={index}>
-                                    <input type="checkbox" id={item.item} value={item.item} {...register("levels")} name="levels" />
+                                    <input type="checkbox" id={item.item} value={item.item} {...register("level")} name="level" />
                                     <label htmlFor={item.item}>{capitalizeFirst(item.item)}</label>
                                 </div>
                             )

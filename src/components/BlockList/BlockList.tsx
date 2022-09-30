@@ -6,7 +6,7 @@ import BlockFilters from "../BlockFilters/BlockFilters";
 const BlockList = () => {
 
     type BlockValues = {
-        title: string;
+        title: string,
         type: string,
         focus: string,
         level: string,
@@ -28,12 +28,7 @@ const BlockList = () => {
     const [blocks, setBlocks] = useState<BlockValues[]>([]);
     const [filteredBlocks, setFilteredBlocks] = useState<BlockValues[]>([]);
 
-    const [filters, setFilters] = useState<FilterValues[]>([]);
-    const [typesFilters, setTypesFilters] = useState<string[]>([]);
-    const [focusFilters, setFocusFilters] = useState<string[]>([]);
-    const [levelsFilters, setLevelsFilters] = useState<string[]>([]);
-    const [equipmentFilters, setEquipmentFilters] = useState<string[]>([]);
-    const [propsFilters, setPropsFilters] = useState<string[]>([]);
+    const [filters, setFilters] = useState<FilterValues>();
 
     useEffect(() => {
         let blockArr: BlockValues[] = [];
@@ -51,28 +46,23 @@ const BlockList = () => {
         return str.charAt(0).toUpperCase() + str.slice(1).replace(/-/g, ' ');
     }
 
-    function filterPlainArray(array: any, filters: any) {
+    const blockFilter = (array: any, filters: any) => {
         const filterKeys = Object.keys(filters);
         return array.filter((item: any) => {
             return filterKeys.every(key => {
-                if (!filters[key].length) return true;
-                return filters[key].find((filter: any) => filter === item[key]);
+                if (!item[key] || filters[key] === false) return false;
+                return filters[key].some((val: any) => item[key].includes(val));
             });
         });
     }
 
     useEffect(() => {
-        const blockFilters = {
-            type: typesFilters[0],
-            focus: focusFilters[0],
-            level: levelsFilters[0],
-            equipment: equipmentFilters[0],
-            props: propsFilters[0]
-        }
-        if (filters.length) {
-            setFilteredBlocks(filterPlainArray(blocks, blockFilters));
+        setFilteredBlocks(blocks);
+        if (filters) {
+            setFilteredBlocks(blockFilter(blocks, filters));
         }
     }, [filters]);
+
 
     if (loading) {
         return (
@@ -126,7 +116,7 @@ const BlockList = () => {
                 }
             </div>
             <div className="sidebar stack-lg sticky">
-                <BlockFilters updateTypesFilters={setTypesFilters} updateFocusFilters={setFocusFilters} updateLevelsFilters={setLevelsFilters} updateEquipmentFilters={setEquipmentFilters} updatePropsFilters={setPropsFilters} updateFilters={setFilters} />
+                <BlockFilters updateFilters={setFilters} />
             </div>
         </div>
     )

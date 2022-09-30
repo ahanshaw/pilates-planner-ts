@@ -39,7 +39,6 @@ const BlockList = () => {
             });
         });
         setBlocks(blockArr);
-        setFilteredBlocks(blockArr);
     }, []);
 
     const capitalizeFirst = (str: string) => {
@@ -57,12 +56,13 @@ const BlockList = () => {
     }
 
     useEffect(() => {
-        setFilteredBlocks(blocks);
-        if (filters) {
+        if (!filters) {
+            setFilteredBlocks(blocks);
+        }
+        else {
             setFilteredBlocks(blockFilter(blocks, filters));
         }
-    }, [filters]);
-
+    }, [loading, filters]);
 
     if (loading) {
         return (

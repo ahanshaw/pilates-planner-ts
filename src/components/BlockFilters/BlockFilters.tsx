@@ -12,7 +12,7 @@ const BlockFilters = (props: any) => {
     const capitalizeFirst = (str: string) => {
         return str.charAt(0).toUpperCase() + str.slice(1).replace(/-/g, ' ');
     }
-    
+
     useEffect(() => {
         database.ref('types').child('list').on('value', function (snapshot) {
             setTypesList(snapshot.val());
@@ -39,7 +39,7 @@ const BlockFilters = (props: any) => {
         props: string[];
     };
 
-    const { register, handleSubmit } = useForm<FilterValues>();
+    const { register, handleSubmit, reset } = useForm<FilterValues>();
 
     const onSubmit = handleSubmit((data: any) => {
         let cleanData: any = {};
@@ -52,6 +52,12 @@ const BlockFilters = (props: any) => {
 
         props.updateFilters(cleanData);
     });
+
+    const resetForm = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
+        reset();
+        props.updateFilters();
+    }
 
     return (
         <>
@@ -127,6 +133,7 @@ const BlockFilters = (props: any) => {
                     }
                 </fieldset>
                 <button className="btn-primary" type="submit">Filter Blocks</button>
+                <button className="btn-secondary" onClick={resetForm}>Clear Filters</button>
             </form>
         </>
     )

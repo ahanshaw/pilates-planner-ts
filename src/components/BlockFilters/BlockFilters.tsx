@@ -40,6 +40,8 @@ const BlockFilters = (props: any) => {
     };
 
     const { register, handleSubmit, reset } = useForm<FilterValues>();
+    const [filtered, setFiltered] = useState<boolean>(false);
+
 
     const onSubmit = handleSubmit((data: any) => {
         let cleanData: any = {};
@@ -51,12 +53,14 @@ const BlockFilters = (props: any) => {
         });
 
         props.updateFilters(cleanData);
+        setFiltered(true);
     });
 
     const resetForm = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         reset();
         props.updateFilters();
+        setFiltered(false);
     }
 
     return (
@@ -133,7 +137,9 @@ const BlockFilters = (props: any) => {
                     }
                 </fieldset>
                 <button className="btn-primary" type="submit">Filter Blocks</button>
-                <button className="btn-secondary" onClick={resetForm}>Clear Filters</button>
+                {filtered &&
+                    <button className="btn-secondary" onClick={resetForm}>Clear Filters</button>
+                }
             </form>
         </>
     )

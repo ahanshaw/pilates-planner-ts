@@ -74,6 +74,9 @@ const BlockList = () => {
         <div className="flex-between stack-xl">
             <div className="main stack-xl">
                 <h1>Block List</h1>
+                {filteredBlocks.length < 1 &&
+                    <p>Sorry, nothing matched these filters.</p>
+                }
                 {filteredBlocks
                     .map((block, index) => {
                         return (

@@ -9,20 +9,20 @@ const Block = (props: any) => {
     return (
         <>
             {props.filteredBlocks
-                .map((item: any, index: number) => {
+                .map((block: any, index: number) => {
                     return (
                         <div className="stack-sm max-width" key={index}>
-                            <h2>{item.title}</h2>
+                            <h2>{block.title}</h2>
                             <div className="flex-fifty-fifty">
                                 <div>
-                                    <p><strong>Type:</strong> {capitalizeFirst(item.type)}</p>
-                                    <p><strong>Level:</strong> {capitalizeFirst(item.level)}</p>
-                                    <p><strong>Focus:</strong> {capitalizeFirst(item.focus)}</p>
+                                    <p><strong>Type:</strong> {capitalizeFirst(block.type)}</p>
+                                    <p><strong>Level:</strong> {capitalizeFirst(block.level)}</p>
+                                    <p><strong>Focus:</strong> {capitalizeFirst(block.focus)}</p>
                                 </div>
                                 <div>
-                                    <p><strong>Equipment:</strong> {capitalizeFirst(item.equipment)}</p>
-                                    <p><strong>Props:</strong> {item.props?.length > 0 ?
-                                        item.props.map((prop: any, index: number) => {
+                                    <p><strong>Equipment:</strong> {capitalizeFirst(block.equipment)}</p>
+                                    <p><strong>Props:</strong> {block.props?.length > 0 ?
+                                        block.props.map((prop: any, index: number) => {
                                             return (
                                                 <span className="block-props" key={index}>
                                                     {capitalizeFirst(prop)}
@@ -33,10 +33,10 @@ const Block = (props: any) => {
                                     </p>
                                 </div>
                             </div>
-                            <p><strong>Start position:</strong> {item.start}</p>
+                            <p><strong>Start position:</strong> {block.start}</p>
                             <p><strong>Instructions:</strong></p>
                             <ul>
-                                {item.instructions.map((instruction: any, index: number) => {
+                                {block.instructions.map((instruction: any, index: number) => {
                                     return (
                                         <li key={index}>
                                             {instruction.step}

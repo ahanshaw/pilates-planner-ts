@@ -1,29 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { database } from '../../services/firebase';
+import { FilterValues } from '../../services/interfaces';
+import { BlockValues } from '../../services/interfaces';
 
 import BlockFilters from "../BlockFilters/BlockFilters";
 import Block from "../Block/Block";
 
 const BlockList = () => {
-
-    type BlockValues = {
-        title: string,
-        type: string,
-        focus: string,
-        level: string,
-        equipment: string,
-        props: string[],
-        start: string,
-        instructions: { step: string }[];
-    };
-
-    type FilterValues = {
-        types: string[],
-        focus: string[],
-        levels: string[],
-        equipment: string[],
-        props: string[];
-    };
 
     const [loading, setLoading] = useState<boolean>(true);
     const [blocks, setBlocks] = useState<BlockValues[]>([]);

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { database } from '../../services/firebase';
 import { useForm } from 'react-hook-form';
+import { FilterValues } from '../../services/interfaces';
 
 const BlockFilters = (props: any) => {
     const [typesList, setTypesList] = useState<{ item: string }[]>([]);
@@ -30,14 +31,6 @@ const BlockFilters = (props: any) => {
             setPropsList(snapshot.val());
         });
     }, []);
-
-    type FilterValues = {
-        type: string[],
-        focus: string[],
-        level: string[],
-        equipment: string[],
-        props: string[];
-    };
 
     const { register, handleSubmit, reset } = useForm<FilterValues>();
     const [filtered, setFiltered] = useState<boolean>(false);

@@ -3,6 +3,7 @@ import { database } from '../../services/firebase';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { auth } from '../../services/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { BlockValues } from '../../services/interfaces';
 
 const BlockAdd = () => {
     const [user] = useAuthState(auth);
@@ -53,18 +54,7 @@ const BlockAdd = () => {
         setLoading(false);
     }, []);
 
-    type FormValues = {
-        title: string;
-        type: string,
-        focus: string,
-        level: string,
-        equipment: string,
-        props: string[],
-        start: string,
-        instructions: { step: string }[];
-    };
-
-    const { control, register, handleSubmit, formState: { errors } } = useForm<FormValues>({
+    const { control, register, handleSubmit, formState: { errors } } = useForm<BlockValues>({
         defaultValues: {
             instructions: [{ step: '' }]
         }

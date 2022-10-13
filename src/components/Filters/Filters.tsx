@@ -3,7 +3,7 @@ import { database } from '../../services/firebase';
 import { useForm } from 'react-hook-form';
 import { FilterValues } from '../../services/interfaces';
 
-const BlockFilters = (props: any) => {
+const Filters = (props: any) => {
     const [typesList, setTypesList] = useState<{ item: string }[]>([]);
     const [levelList, setLevelList] = useState<{ item: string }[]>([]);
     const [focusList, setFocusList] = useState<{ item: string }[]>([]);
@@ -138,4 +138,4 @@ const BlockFilters = (props: any) => {
     )
 }
 
-export default BlockFilters;
+export default Filters;

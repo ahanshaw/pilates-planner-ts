@@ -29,7 +29,8 @@ const BlockAdd = () => {
         setNewProp(lowerCaseAll(prop));
     };
 
-    const addNewProp = () => {
+    const addNewProp = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
         let propsListCopy = [...propsList];
         propsListCopy.push({ "item": newProp });
         setPropsList(propsListCopy);

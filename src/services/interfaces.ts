@@ -16,3 +16,10 @@ export interface BlockValues {
     start: string,
     instructions: { step: string }[];
 };
+
+export interface WorkoutValues {
+    user: string,
+    title: string,
+    description: string,
+    blocks: { block: string }[];
+};

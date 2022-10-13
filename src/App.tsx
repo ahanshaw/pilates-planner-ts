@@ -3,12 +3,13 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Header } from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";
 
-import BlockList from "./components/BlockList/BlockList";
+import Blocks from "./components/Blocks/Blocks";
 import BlockAdd from "./components/BlockAdd/BlockAdd";
 import UserLogin from "./components/UserLogin/UserLogin";
 import UserRegister from "./components/UserRegister/UserRegister";
 import UserPasswordReset from "./components/UserPasswordReset/UserPasswordReset";
 import UserDashboard from "./components/UserDashboard/UserDashboard";
+import WorkoutAdd from "./components/WorkoutAdd/WorkoutAdd";
 
 import "./assets/scss/main.scss";
 
@@ -36,7 +37,10 @@ function App() {
                 <BlockAdd />
               </Route>
               <Route path="/block/list">
-                <BlockList />
+                <Blocks />
+              </Route>
+              <Route path="/workouts/add">
+                <WorkoutAdd />
               </Route>
               <Route>
                 <UserDashboard />

@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { database } from '../../services/firebase';
+import React, { useState } from "react";
 import { FilterValues } from '../../services/interfaces';
-import { BlockValues } from '../../services/interfaces';
 
 import Filters from "../Filters/Filters";
 import BlockList from "../BlockList/BlockList";
-import Block from "../Block/Block";
 
 const Blocks = () => {
     const [filters, setFilters] = useState<FilterValues>();

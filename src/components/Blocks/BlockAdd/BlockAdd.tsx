@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { database } from '../../services/firebase';
+import { database } from '../../../services/firebase';
 import { useForm, useFieldArray } from 'react-hook-form';
-import { auth } from '../../services/firebase';
+import { auth } from '../../../services/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { BlockValues } from '../../services/interfaces';
+import { BlockValues } from '../../../services/interfaces';
 
 const BlockAdd = () => {
     const [user] = useAuthState(auth);

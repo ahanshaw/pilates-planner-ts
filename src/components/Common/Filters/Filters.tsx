@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { database } from '../../services/firebase';
+import { database } from '../../../services/firebase';
 import { useForm } from 'react-hook-form';
-import { FilterValues } from '../../services/interfaces';
+import { FilterValues } from '../../../services/interfaces';
 
 const Filters = (props: any) => {
     const [typesList, setTypesList] = useState<{ item: string }[]>([]);

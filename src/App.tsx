@@ -1,15 +1,14 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import { Header } from "./components/Header/Header";
-import { Footer } from "./components/Footer/Footer";
+import { Header } from "./components/Common/Header/Header";
+import { Footer } from "./components/Common/Footer/Footer";
 
-import Blocks from "./components/Blocks/Blocks";
-import BlockAdd from "./components/BlockAdd/BlockAdd";
-import UserLogin from "./components/UserLogin/UserLogin";
-import UserRegister from "./components/UserRegister/UserRegister";
-import UserPasswordReset from "./components/UserPasswordReset/UserPasswordReset";
-import UserDashboard from "./components/UserDashboard/UserDashboard";
-import WorkoutAdd from "./components/WorkoutAdd/WorkoutAdd";
+import BlocksPage from "./components/Blocks/BlockPage/BlockPage";
+import BlockAdd from "./components/Blocks/BlockAdd/BlockAdd";
+import UserLogin from "./components/User/UserLogin/UserLogin";
+import UserRegister from "./components/User/UserRegister/UserRegister";
+import UserPasswordReset from "./components/User/UserPasswordReset/UserPasswordReset";
+import UserDashboard from "./components/User/UserDashboard/UserDashboard";
 
 import "./assets/scss/main.scss";
 
@@ -37,10 +36,7 @@ function App() {
                 <BlockAdd />
               </Route>
               <Route path="/block/list">
-                <Blocks />
-              </Route>
-              <Route path="/workouts/add">
-                <WorkoutAdd />
+                <BlocksPage />
               </Route>
               <Route>
                 <UserDashboard />

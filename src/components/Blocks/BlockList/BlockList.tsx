@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { database } from '../../services/firebase';
-import { FilterValues } from '../../services/interfaces';
-import { BlockValues } from '../../services/interfaces';
+import { database } from '../../../services/firebase';
+import { BlockValues } from '../../../services/interfaces';
 
-import Filters from "../Filters/Filters";
 import Block from "../Block/Block";
 
 const BlockList = (props: any) => {

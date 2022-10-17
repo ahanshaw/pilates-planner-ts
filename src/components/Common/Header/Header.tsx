@@ -1,4 +1,4 @@
-import { auth, logout } from '../../services/firebase';
+import { auth, logout } from '../../../services/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 export function Header() {

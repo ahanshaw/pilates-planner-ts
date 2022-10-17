@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { FilterValues } from '../../services/interfaces';
+import { FilterValues } from '../../../services/interfaces';
 
-import Filters from "../Filters/Filters";
+import Filters from "../../Common/Filters/Filters";
 import BlockList from "../BlockList/BlockList";
 
-const Blocks = () => {
+const BlockPage = () => {
     const [filters, setFilters] = useState<FilterValues>();
 
     return (
@@ -20,4 +20,4 @@ const Blocks = () => {
     )
 }
 
-export default Blocks;
+export default BlockPage;

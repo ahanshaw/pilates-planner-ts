@@ -4,7 +4,7 @@ import { FilterValues } from '../../../services/interfaces';
 import Filters from "../../Common/Filters/Filters";
 import BlockList from "../BlockList/BlockList";
 
-const BlockPage = () => {
+const Blocks = () => {
     const [filters, setFilters] = useState<FilterValues>();
 
     return (
@@ -20,4 +20,4 @@ const BlockPage = () => {
     )
 }
 
-export default BlockPage;
+export default Blocks;

@@ -7,6 +7,7 @@ export interface FilterValues {
 };
 
 export interface BlockValues {
+    key: string,
     title: string,
     type: string,
     focus: string,

@@ -37,6 +37,8 @@ const WorkoutAdd = () => {
         });
     }
 
+    // FIX FILTERS WHEN ADDED BLOCKS EXIST
+
     useEffect(() => {
         if (filters === undefined) {
             setFilteredBlocks(blocks);
